@@ -3,7 +3,7 @@ import System.Environment
 
 main :: IO ()
 main = do
-  input <- (=<<) getInput getArgs
+  input <- getInput =<< getArgs
   putStrLn $ fullWidthifyText input
 
 getInput :: [String] -> IO String
