@@ -1,11 +1,19 @@
 import Data.Char
+import System.Environment
 
 main :: IO ()
 main = do
-  input <- getContents
+  input <- (=<<) getInput getArgs
   putStrLn $ fullWidthifyText input
 
-fullWidthifyText :: [Char] -> [Char]
+getInput :: [String] -> IO String
+getInput args =
+  if length args > 0 then
+    pure $ unwords args
+  else
+    getContents
+
+fullWidthifyText :: String -> String
 fullWidthifyText =
   map (chr . convertChar . ord)
 
