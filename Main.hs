@@ -7,11 +7,8 @@ main = do
   putStrLn $ fullWidthifyText input
 
 getInput :: [String] -> IO String
-getInput args =
-  if length args > 0 then
-    pure $ unwords args
-  else
-    getContents
+getInput [] = getContents
+getInput args = pure $ unwords args
 
 fullWidthifyText :: String -> String
 fullWidthifyText =
